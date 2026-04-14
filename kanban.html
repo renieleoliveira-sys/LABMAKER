@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanban de Solicitações</title>
+
+<style>
+/* FUNDO */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+}
+
+/* TÍTULO */
+.titulo {
+    background: linear-gradient(to right, #1c3d91, #2c55c0, #1c3d91);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+}
+
+/* KANBAN */
+.kanban {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+/* COLUNAS */
+.coluna {
+    background: white;
+    width: 260px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* TÍTULOS */
+.coluna h3 {
+    text-align: center;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* CORES */
+.recebido h3 { background: #ffc107; }
+.analise h3 { background: #17a2b8; }
+.fazendo h3 { background: #007bff; }
+.concluido h3 { background: #28a745; }
+
+/* CARD */
+.card {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 5px solid #ccc;
+}
+
+/* COR DO CARD */
+.card.recebido { border-left-color: #ffc107; }
+.card.analise { border-left-color: #17a2b8; }
+.card.fazendo { border-left-color: #007bff; }
+.card.concluido { border-left-color: #28a745; }
+
+/* BOTÃO VOLTAR */
+.voltar {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background: #1c3d91;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="titulo">Acompanhamento de Solicitações</div>
+
+<!-- KANBAN -->
+<div class="kanban">
+
+    <div class="coluna recebido">
+        <h3>Recebido</h3>
+        <div id="recebido"></div>
+    </div>
+
+    <div class="coluna analise">
+        <h3>Análise</h3>
+        <div id="analise"></div>
+    </div>
+
+    <div class="coluna fazendo">
+        <h3>Fazendo</h3>
+        <div id="fazendo"></div>
+    </div>
+
+    <div class="coluna concluido">
+        <h3>Concluído</h3>
+        <div id="concluido"></div>
+    </div>
+
+</div>
+
+<a href="acompanharsolicitacao.html" class="voltar">⬅ Voltar</a>
+
+<script>
+// =========================
+// PEGAR BUSCA DA URL
+// =========================
+const params = new URLSearchParams(window.location.search);
+const busca = params.get("busca");
+
+// =========================
+// LIMPAR COLUNAS
+// =========================
+function limparKanban() {
+    document.getElementById("recebido").innerHTML = "";
+    document.getElementById("analise").innerHTML = "";
+    document.getElementById("fazendo").innerHTML = "";
+    document.getElementById("concluido").innerHTML = "";
+}
+
+// =========================
+// CRIAR CARD
+// =========================
+function criarCard(dado) {
+    const card = document.createElement("div");
+    card.classList.add("card", dado.status);
+
+    card.innerHTML = `
+        <strong>${dado.nome}</strong>
+        <p>${dado.descricao}</p>
+        <small>Protocolo: ${dado.protocolo}</small>
+    `;
+
+    return card;
+}
+
+// =========================
+// MOSTRAR RESULTADOS
+// =========================
+function mostrarResultados(dados) {
+    limparKanban();
+
+    if (!busca) {
+        alert("Nenhuma busca informada!");
+        return;
+    }
+
+    const resultados = dados.filter(s =>
+        s.protocolo.toLowerCase().includes(busca.toLowerCase()) ||
+        s.nome.toLowerCase().includes(busca.toLowerCase())
+    );
+
+    if (resultados.length === 0) {
+        alert("Nenhuma solicitação encontrada!");
+        return;
+    }
+
+    resultados.forEach(s => {
+        const card = criarCard(s);
+        document.getElementById(s.status).appendChild(card);
+    });
+}
+
+// =========================
+// BUSCAR NO BACKEND
+// =========================
+fetch("http://localhost:3000/solicitacoes")
+    .then(res => res.json())
+    .then(dados => {
+        mostrarResultados(dados);
+    })
+    .catch(() => {
+        alert("Erro ao conectar com o servidor");
+    });
+</script>
+
+</body>
+</html>

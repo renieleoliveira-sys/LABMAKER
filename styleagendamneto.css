@@ -1,0 +1,373 @@
+/* BASE */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* TOPO */
+.inicio {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 35px;
+    background: linear-gradient(to right, #1c3d91, #2c55c0, #1c3d91);
+    height: 15vh;
+    width: 100%;
+    padding-top: 50px;
+    text-shadow: 2px 2px 6px #1c3d91;
+    gap: 40px;
+    margin-top: 0;
+}
+
+.inicio1 {
+    color: #7da1fe;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    margin-top: -100px;
+}
+
+.linha {
+    width: 100%;
+    color: #1c3d91;
+}
+
+/* CALENDÁRIO */
+#calendario {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 50px;
+}
+
+.fc {
+    font-size: 10px;
+}
+
+.fc-toolbar-title {
+    color: #1c3d91;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.fc-button {
+    background: #1c3d91 !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+}
+
+.fc-button:hover {
+    background: #2c55c0 !important;
+}
+
+.fc-col-header-cell {
+    background: #2c55c0;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 18px 0;
+}
+
+.fc-daygrid-day {
+    transition: 0.1s;
+    min-height: 100px;
+}
+
+.fc-daygrid-day:hover {
+    background: #eef2ff;
+    cursor: pointer;
+}
+
+.fc-daygrid-day-number {
+    font-weight: bold;
+    color: #1c3d91;
+    padding: 15px;
+}
+
+.fc-day-today {
+    background: #e6ecff !important;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+    border: 1px solid #e0e3ea;
+}
+
+/* CONTAINER */
+.container-agendamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 900px;
+    margin: 50px auto;
+    min-height: 70vh;
+    justify-content: center;
+}
+
+/* ETAPAS */
+.etapa {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.etapa.ativa {
+    display: flex;
+}
+
+/* BOTÃO VOLTAR */
+.voltar {
+    margin: 25px 0 20px;
+    padding: 10px 15px;
+    border: none;
+    background: #1c3d91;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* MENSAGEM */
+.mensagemCadastro {
+    background: #fff3cd;
+    color: #856404;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ffeeba;
+    animation: aparecer 0.5s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HORÁRIOS */
+.horarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 50px 0;
+}
+
+.horarios button {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #1c3d91;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.horarios button:hover {
+    background: #2c55c0;
+    color: white;
+    transform: scale(1.05);
+}
+
+.horarios button.selecionado {
+    background: #1c3d91;
+    color: white;
+    border: none;
+    position: relative;
+}
+
+.horarios button.selecionado::after {
+    content: "✓";
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 12px;
+}
+
+/* GRUPOS DE HORÁRIOS */
+.horariosdia,
+.horariostarde,
+.horariosnoite {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* CARD HORÁRIOS */
+.horariogeral {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    animation: aparecer 0.3s ease;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    color: #2c55c0;
+    margin-bottom: 45px;
+}
+
+/* FORMULÁRIO */
+.cadastro {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;;
+}
+
+.formulario h1 {
+    color: #2c55c0;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* INPUTS COM ÍCONES */
+.icone-input-nome,
+.icone-input-telefone,
+.icone-input-quant-pessoas,
+.icone-input-descricao {
+    position: relative;
+    width: 250px;
+}
+
+.icone-input-nome input,
+.icone-input-telefone input,
+.icone-input-quant-pessoas input,
+.icone-input-descricao textarea {
+    width: 180%;
+    padding: 10px 10px 10px 35px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+    background-color: #b8d9ff;
+    
+}
+
+.icone-input-descricao textarea {
+    height: 70px;
+    background-color: #b8d9ff;
+}
+
+.icone-input-nome svg,
+.icone-input-telefone svg,
+.icone-input-quant-pessoas svg{
+    position: absolute;
+    left: 10px;
+    top: 30%;
+    transform: translateY(-50%);
+    width: 18px;
+    color: #2c55c0;
+}
+
+.icone-input-descricao svg {
+position: absolute;
+    left: 10px;
+    top: 15%;
+    transform: translateY(-50%);
+    width: 18px;
+    color: #2c55c0;
+}    
+/* LABEL */
+label {
+    color: #2c55c0;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+/* BOTÃO FINAL */
+.btnsolicitarAgendamento {
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+    background-color: #1c3d91;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 490px;
+    transition: 0.2s;
+}
+
+.btnsolicitarAgendamento:hover {
+    transform: scale(1.05);
+}
+
+/* VOLTAR INDEX */
+.voltarindex {
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
+    background: linear-gradient(135deg, #1c3d91, #2c55c0);
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-left: 81%;
+}
+
+.voltarindex:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #2c55c0, #1c3d91);
+}
+
+@media (max-width: 700px) {
+
+    /* TOPO (ESSA PARTE FALTA) */
+    .inicio {
+        font-size: 22px;
+        padding: 20px 10px;
+        height: auto; /* remove altura fixa */
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .inicio1 {
+        font-size: 14px;
+        margin-top: 5px; /* remove o -100px */
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    /* CALENDÁRIO */
+    #calendario {
+        flex: 1;
+        margin-top: 20px;
+    }
+
+    .fc {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar Solicitação</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+}
+
+/* CONTAINER */
+.container-formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER */
+.titulo {
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #1c3d91, #2c55c0);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+/* BLOCO TEXTO + ÍCONE */
+.img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+.img img {
+    width: 30px;
+}
+
+.img p {
+    font-size: 20px;
+    color: #1c3d91;
+}
+
+/* CARD */
+.formcriar {
+    background: white;
+    width: 100%;
+    max-width: 800px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* FORM */
+form {
+    width: 100%;
+}
+
+form label {
+    font-size: 13px;
+    color: #1c3d91;
+    margin-top: 10px;
+    display: block;
+}
+
+/* INPUTS */
+.formcriar input,
+.formcriar textarea {
+    width: 95%;
+    padding: 10px 10px 10px 35px;
+    border-radius: 8px;
+    border: none;
+    background: #b8d9ff;
+    margin-top: 5px;
+}
+
+/* TEXTAREA */
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* ÍCONES */
+.icone-nome,
+.icone-telefone,
+.icone-quant-pessoas,
+.icone-descricao,
+.icone-especificacao,
+.icone-anexar {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.icone-nome svg,
+.icone-telefone svg,
+.icone-quant-pessoas svg,
+.icone-descricao svg,
+.icone-especificacao svg,
+.icone-anexar svg {
+    position: absolute;
+    left: 10px;
+    top: 55%;
+    transform: translateY(-50%);
+    width: 18px;
+    color: #2c55c0;
+}
+
+/* AJUSTE TEXTAREA */
+.icone-descricao svg,
+.icone-especificacao svg {
+    top: 22px;
+}
+
+/* BOTÃO */
+.btncriar {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background: #1c3d91;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* VOLTAR */
+.voltar-solicitacao {
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
+
+    background: linear-gradient(135deg, #1c3d91, #2c55c0);
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.voltar-solicitacao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #2c55c0, #1c3d91);
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .formcriar {
+        margin: 10px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container-formulario">
+
+    <div class="titulo">Criar Solicitação</div>
+
+    <div class="img">
+        <img src="img/png-transparent-note-with-pen-logo-computer-icons-form-register-button-miscellaneous-angle-text-thumbnail-removebg-preview.png" alt="">
+        <p>⚠️ Preencha os dados abaixo para criar solicitação</p>
+    </div>
+
+    <div class="formcriar">
+
+        <form id="formSolicitacao">
+
+            <!-- NOME -->
+            <label>Nome Completo:</label>
+            <div class="icone-nome">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                </svg>
+                <input type="text" name="nome" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <!-- TELEFONE -->
+            <label>Número de telefone:</label>
+            <div class="icone-telefone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                </svg>
+                <input type="tel" name="telefone" id="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
+            </div>
+
+            <!-- QUANTIDADE -->
+            <label>Quantidade de Pessoas:</label>
+            <div class="icone-quant-pessoas">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                </svg>
+                <input type="number" name="quantidade" placeholder="Ex: 2" min="1" max="40" required>
+            </div>
+
+            <!-- DESCRIÇÃO -->
+            <label>Descrição da Solicitação:</label>
+            <div class="icone-descricao">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+                    <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                </svg>
+                <textarea name="descricao" placeholder="Descreva sua solicitação" required></textarea>
+            </div>
+
+            <!-- ESPECIFICAÇÃO -->
+            <label>Especificações Técnicas (opcional):</label>
+            <div class="icone-especificacao">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-journal-check" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                </svg>
+                <textarea name="especificacoes" placeholder="Ex: Impressão 3D, Arduino, etc."></textarea>
+            </div>
+
+            <!-- ANEXO -->
+            <label>Anexar Arquivo:</label>
+            <div class="icone-anexar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                    <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0z"/>
+                </svg>
+                <input type="file" name="anexo">
+            </div>
+
+            <!-- BOTÃO -->
+            <button class="btncriar" type="submit">
+                Enviar Solicitação
+            </button>
+
+        </form>
+
+    </div>
+
+    <a href="solicitacao.html" class="voltar-solicitacao">Voltar</a>
+
+</div>
+<script>
+// ==========================
+// MÁSCARA TELEFONE
+// ==========================
+const telefone = document.getElementById("telefone");
+
+telefone.addEventListener("input", function () {
+
+    let valor = telefone.value.replace(/\D/g, "");
+
+    valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2");
+    valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
+
+    telefone.value = valor;
+});
+
+// ==========================
+// ENVIO PARA O SERVIDOR
+// ==========================
+const form = document.getElementById("formSolicitacao");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const dados = {
+        nome: formData.get("nome"),
+        telefone: formData.get("telefone"),
+        quantidade: formData.get("quantidade"),
+        descricao: formData.get("descricao"),
+        especificacoes: formData.get("especificacoes")
+    };
+
+    fetch("http://localhost:3000/solicitacoes", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dados)
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        form.reset();
+    })
+    .catch(() => {
+        alert("Erro ao enviar solicitação");
+    });
+
+});
+</script>
+</body>
+</html>

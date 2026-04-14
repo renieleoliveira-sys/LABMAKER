@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<title>Login Administrador</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+/* CARD LOGIN */
+.login {
+    background: white;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 21, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px;
+    height: 500px;
+    align-items: center;
+}
+
+/* IMAGENS */
+.nomesenaiadm {
+    margin-top: 50px;
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+.imagemadmin {
+    width: 200px;
+    margin-bottom: 10px;
+    margin-top: -20px;
+    margin-left: 30px;
+}
+
+/* FORM */
+.formloginadm {
+    margin-top: -80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formloginadm h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+/* INPUTS */
+input {
+    padding: 10px;
+}
+
+/* BOTÃO */
+button {
+    padding: 10px;
+    background: #1c3d91;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* LINK VOLTAR */
+.sairdeloginadm {
+    color: #1c3d91;
+    text-decoration: none;
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* ERRO */
+#erro {
+    color: red;
+    font-size: 14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="login">
+
+    <form class="formloginadm" onsubmit="login(); return false;">
+
+        <img src="img/nome-senai.png" class="nomesenaiadm">
+        <img src="img/admin-removebg-preview.png" class="imagemadmin">
+
+        <h2>Login Administrador</h2>
+
+        <input 
+            type="email" 
+            id="email" 
+            placeholder="Email" 
+            required
+            oninvalid="this.setCustomValidity('Informe o email, por gentileza.')"
+            oninput="this.setCustomValidity('')"
+        >
+
+        <input 
+            type="password" 
+            id="senha" 
+            placeholder="Senha" 
+            required
+            oninvalid="this.setCustomValidity('Informe a senha, por gentileza.')"
+            oninput="this.setCustomValidity('')"
+        >
+
+        <button type="submit">Entrar</button>
+
+    </form>
+
+    <a href="index.html" class="sairdeloginadm">← Voltar</a>
+
+    <p id="erro"></p>
+
+</div>
+
+<script>
+function login() {
+    var email = document.getElementById("email").value;
+    var senha = document.getElementById("senha").value;
+
+    var emailCorreto = "admin@gmail.com";
+    var senhaCorreta = "123456";
+
+    if (email === emailCorreto && senha === senhaCorreta) {
+        window.location.href = "administrador.html";
+    } else {
+        document.getElementById("erro").innerText = "Email ou senha incorretos";
+    }
+}
+</script>
+
+</body>
+</html>
